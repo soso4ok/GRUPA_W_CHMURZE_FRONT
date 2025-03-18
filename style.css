@@ -209,6 +209,10 @@ p {
     color: black;
     text-align: left;
     margin-right: 10px;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 60%;
 }
 
 .todo-item .text s {
