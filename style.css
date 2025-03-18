@@ -1,0 +1,267 @@
+body {
+    font-family: 'e-Ukraine', sans-serif;
+    background-color: #121212;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: white;
+}
+
+h1 {
+    font-size: 25px;
+    font-weight: normal;
+    color: #fff;
+    margin-bottom: 0px;
+}
+
+#login-title{
+    text-align: center;
+    margin-left: -270px;
+    margin-bottom: -5px;
+    font-size: 25px;
+}
+
+#signup-title {
+    text-align: center;
+    margin-left: -250px;
+    font-size: 25px;
+    margin-bottom: -5px;
+}
+
+#todo-title {
+    text-align: center;
+    margin-bottom: -45px;
+    font-size: 45px;
+}
+
+
+.auth-container {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #1E1E1E;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 290px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 10%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+    background-color: #121212;
+    color: white;
+    margin-left: 1680px;
+}
+
+.nav button {
+    background-color: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+input {
+    width: 90%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    background: #fff;
+    color: black;
+}
+
+button {
+    background-color: #262626;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+label {
+    display: block;
+    text-align: left;
+    font-size: 18px;
+    color: black;
+    margin-bottom: 1px;
+}
+
+button:hover {
+    background-color: #2e2e2e;
+    transition: background 0.3s;
+}
+
+p {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.error {
+    color: red;
+}
+
+.todo-app {
+    width: 500px;
+    background: transparent;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 30px;
+}
+
+.todo-app button {
+    background-color: transparent;
+    color: purple;
+    border: none;
+    padding: 12px;
+    width: 10%;
+    margin-top: 0px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: normal;
+    transition: background 0.3s;
+}
+
+.todo-input-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    width: 100%;
+    gap: 10px;
+}
+
+.todo-input input {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    border: 2px solid #6A00F4;
+    background: red;
+    color: white;
+    margin-right: 15px;
+}
+
+.task-input {
+    width: calc(100% - 20px);
+    padding: 20px;
+    margin: 10px 0;
+    border: 1px solid purple;
+    border-radius: 8px;
+    font-size: 16px;
+    background: #fff;
+    color: black;
+}
+
+#add-task-btn {
+    background: #6A00F4;
+    padding: 21px;
+    border-radius: 8px;
+    color: white;
+    font-weight: normal;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 180px;
+    margin-top: 2px;
+}
+
+#add-task-btn:hover {
+    background-color: #5A00D1;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    background: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    color: white;
+    position: relative;
+    width: 105%;
+    margin-left: -40px;
+    gap: 10px;
+}
+
+.todo-item .text {
+    flex-grow: 1;
+    color: black;
+    text-align: left;
+    margin-right: 10px;
+}
+
+.todo-item .text s {
+    text-decoration: line-through;
+    color: black;
+}
+
+.todo-item .actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.todo-item .actions button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
+
+.todo-item .actions button:hover {
+    color: #6A00F4;
+}
+
+.todo-item .actions .completed {
+    margin-right: 10px;
+}
+
+.todo-item .edit,
+.todo-item .delete {
+    font-size: 14px;
+}
+
+.todo-item .actions button i {
+    font-size: 18px;
+}
+
+#logout-btn {
+    background: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+    width: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#logout-btn:hover {
+    color: #6A00F4;
+    text-decoration: underline;
+}
