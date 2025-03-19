@@ -1,0 +1,130 @@
+body {
+    font-family: 'e-Ukraine', sans-serif;
+    background-color: #121212;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: white;
+}
+
+h1 {
+    font-size: 25px;
+    font-weight: normal;
+    color: #fff;
+    margin-bottom: 0px;
+}
+
+#login-title{
+    text-align: center;
+    margin-left: -270px;
+    margin-bottom: -5px;
+    font-size: 25px;
+}
+
+.container {
+    color: #fff;
+}
+
+#signup-title {
+    text-align: center;
+    margin-left: -250px;
+    font-size: 25px;
+    margin-bottom: -5px;
+}
+
+#todo-title {
+    text-align: center;
+    margin-bottom: -45px;
+    font-size: 45px;
+}
+
+
+.auth-container {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #1E1E1E;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 290px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 10%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+    background-color: #121212;
+    color: white;
+    margin-left: 1680px;
+}
+
+.nav button {
+    background-color: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+input {
+    width: 90%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    background: #fff;
+    color: black;
+}
+
+button {
+    background-color: #262626;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+label {
+    display: block;
+    text-align: left;
+    font-size: 18px;
+    color: black;
+    margin-bottom: 1px;
+}
+
+button:hover {
+    background-color: #2e2e2e;
+    transition: background 0.3s;
+}
+
+p {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.error {
+    color: red;
+}
+
+.signup-form {
+    color: #fff;
+}
