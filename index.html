@@ -1,25 +1,23 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-Do List</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="todo-styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-
-<div class="container todo-app">
-    <div class="todo-input-container">
-        <input type="text" id="task-input" class="task-input" placeholder="Add Task">
-        <button id="add-task-btn">
-            Add to list <i class="fa-solid fa-square-plus"></i>
-        </button>
+<h1>Todo List</h1>
+    <div class="container">
+        <button id="logoutBtn" class="logout-btn">Logout</button>
+        <div class="input-container">
+            <input type="text" id="taskInput" placeholder="Add task">
+            <button id="addTaskBtn">Add to list <i class="fa-solid fa-square-plus"></i>
+        </div>
+        <ul id="taskList"></ul>
     </div>
-    <ul id="task-list"></ul>
-    <button id="logout-btn">Wyloguj</button>
-</div>
-
-<script src="app.js"></script>
+    <script src="auth.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
