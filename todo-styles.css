@@ -32,6 +32,8 @@ body {
     padding: 20px;
     border-radius: 12px;
     margin-top: 30px;
+    margin-top: 80px;
+    max-height: 90vh;
 }
 
 h1 {
@@ -39,6 +41,12 @@ h1 {
     margin-bottom: 15px;
     font-weight: normal;
     font-size: 45px;
+    margin-top: 0px;
+}
+#taskList {
+    max-height: 60vh;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .input-container {
@@ -56,6 +64,7 @@ h1 {
     margin: 10px 0;
     border: 1px solid #6A00F4;
     border-radius: 8px;
+    outline:none;
     font-size: 16px;
     background: #fff;
     color: black;
