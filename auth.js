@@ -1,4 +1,3 @@
-// Check if user is logged in before accessing the todo list
 if (window.location.pathname.endsWith('index.html')) {
     const loggedInUser = localStorage.getItem('loggedInUser');
     if (!loggedInUser) {
@@ -6,15 +5,6 @@ if (window.location.pathname.endsWith('index.html')) {
     }
 }
 
-// Logout functionality
-if (window.location.pathname.endsWith('index.html')) {
-    document.getElementById('logoutBtn').addEventListener('click', function () {
-        localStorage.removeItem('loggedInUser');
-        window.location.href = 'login.html';
-    });
-}
-
-// Login functionality
 if (window.location.pathname.endsWith('login.html')) {
     document.getElementById('loginForm').addEventListener('submit', function (e) {
         e.preventDefault();
@@ -32,7 +22,6 @@ if (window.location.pathname.endsWith('login.html')) {
     });
 }
 
-// Registration functionality
 if (window.location.pathname.endsWith('register.html')) {
     document.getElementById('registerForm').addEventListener('submit', function (e) {
         e.preventDefault();

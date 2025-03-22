@@ -7,17 +7,22 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<h1 id="zxc">Sign Up</h1>
-    <div class="container">
-        <form id="registerForm">
-            <label>Email</label>
-            <input type="text" id="username" placeholder="Value">
-            <label>Password</label>
-            <input type="password" id="password" placeholder="Value">
-            <button type="submit">Register</button>
-        </form>
-        <p>Already have an account? <a href="login.html">Login here</a></p>
+<header>
+    <div id="auth-buttons">
+        <button id="signup-button" style="background-color: #2c2c2c;">Sign Up</button>
+        <button id="login-button" onclick="window.location.href='login.html'">Login</button>
     </div>
-    <script src="auth.js"></script>
+</header>
+<h1 id="zxc">Sign Up</h1>
+<div class="container">
+    <form id="registerForm">
+        <label>Email</label>
+        <input type="text" id="username" placeholder="Value">
+        <label>Password</label>
+        <input type="password" id="password" placeholder="Value">
+        <button type="submit">Register</button>
+    </form>
+</div>
+<script src="auth.js"></script>
 </body>
 </html>
