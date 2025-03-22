@@ -5,19 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo List</title>
     <link rel="stylesheet" href="todo-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=e-Ukraine:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-<h1>Todo List</h1>
-    <div class="container">
-        <button id="logoutBtn" class="logout-btn">Logout</button>
-        <div class="input-container">
-            <input type="text" id="taskInput" placeholder="Add task">
-            <button id="addTaskBtn">Add to list <i class="fa-solid fa-square-plus"></i>
-        </div>
-        <ul id="taskList"></ul>
+<header>
+    <div id="auth-buttons">
+        <button id="signup-button" onclick="window.location.href='register.html'">Sign Up</button>
+        <button id="login-button" onclick="window.location.href='login.html'">Login</button>
     </div>
-    <script src="auth.js"></script>
-    <script src="script.js"></script>
+    <div id="user-greeting">
+        <button id="hello-button" style="background-color: #121212;">Hello, [name]</button>
+        <div id="dropdown-menu">
+            <button id="logout-button">Logout</button>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <h1>Todo List</h1>
+    <div class="input-container">
+        <input type="text" id="taskInput" placeholder="Add task">
+        <button id="addTaskBtn">Add to list <i class="fa-solid fa-square-plus"></i></button>
+    </div>
+    <ul id="taskList"></ul>
+</div>
+
+<script src="auth.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

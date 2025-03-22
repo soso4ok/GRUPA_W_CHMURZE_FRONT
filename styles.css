@@ -1,5 +1,21 @@
+@font-face {
+    font-family: 'e-Ukraine';
+    src: url('fonts/e-Ukraine-Regular.woff2') format('woff2'),
+    url('fonts/e-Ukraine-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'e-Ukraine';
+    src: url('fonts/e-Ukraine-Bold.woff2') format('woff2'),
+    url('fonts/e-Ukraine-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
 body {
-    font-family: e-Ukraine, sans-serif;
+    font-family: 'e-Ukraine', sans-serif;
     background-color: #121212;
     display: flex;
     flex-direction: column;
@@ -33,7 +49,6 @@ p{
 
 #zxc{
     margin-left: -230px;
-    letter-spacing: 2px;
 }
 
 h1 {
@@ -42,16 +57,20 @@ h1 {
     margin-bottom: -10px;
     font-size:27px;
     font-weight: normal;
-    letter-spacing: 2px;
 }
 
 input {
     width: 90%;
     padding: 12px;
     margin-bottom: 15px;
-    border: 1px solid #e0e0e0;
+    border: 1px solid #D9D9D9;
     border-radius: 8px;
+    outline:none;
     font-size: 16px;
+}
+
+input::placeholder {
+    color: #b3B3B3;
 }
 
 button {
@@ -65,7 +84,6 @@ button {
     border-radius: 8px;
     font-size: 16px;
     font-weight: normal;
-    letter-spacing: 1px;
 }
 
 button:hover {
@@ -82,17 +100,50 @@ label {
     margin-bottom: 8px;
 }
 
-a {
-    color: purple;
-    text-decoration: none;
-}
 
-a:hover {
-    text-decoration: underline;
-}
-
-#logoutBtn {
-    background-color: #dc3545;
-    width: auto;
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #121212;
     padding: 10px 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    z-index: 1000;
+}
+
+#auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+#auth-buttons button {
+    background-color: #121212;
+    color: white;
+    white-space: nowrap;
+    border: none;
+    cursor: pointer;
+}
+
+#auth-buttons button:hover {
+    background-color: #2c2c2c;
+}
+
+#signup-button, #login-button {
+    background-color: #2c2c2c;
+    color: white;
+    border: none;
+    padding: 11px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background-color 0.3s ease;
+    min-width: 110px;
+    text-align: center;
+}
+
+#signup-button:hover, #login-button:hover {
+    background-color: #3c3c3c;
 }
