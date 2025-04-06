@@ -83,8 +83,11 @@ document.addEventListener('DOMContentLoaded', function () {
         deleteBtn.innerHTML = '<i class="fa-regular fa-trash-can"></i>';
         deleteBtn.classList.add('delete');
         deleteBtn.addEventListener('click', function () {
+            li.classList.add('removing');
+            setTimeout(() => {
             li.remove();
             saveTasks();
+            }, 300);
         });
 
         taskContent.appendChild(checkbox);
