@@ -95,6 +95,8 @@ h1 {
 
 #addTaskBtn:hover {
     background-color: #5A00D1;
+    transform: scale(1.1);
+    transition: 0.2s;
 }
 
 ul {
@@ -115,6 +117,13 @@ li {
     position: relative;
     width: 94%;
     gap: 10px;
+    transition: 0.2s;
+    animation: grow 0.3s ease-out;
+}
+li.completed {
+    background-color: #c1c1c1;
+    transform: scale(0.98);
+    transition: 0.2s;
 }
 
 li.completed span {
@@ -160,16 +169,26 @@ li button {
 
 li button.edit {
     color: #6A00F4;
+    transition: 0.1s;
+}
+
+li button.edit:hover {
+    color: #e68b0f;
+    transform: scale(1.3);
+    transition: 0.3s;
 }
 
 li button.delete {
     color: #6A00F4;
+    transition: 0.1s;
 }
 
-li button:hover {
-    color: #5A00D1;
-    transition: background 0.3s;
+li button.delete:hover {
+    color: red;
+    transform: scale(1.3);
+    transition: 0.3s;
 }
+
 
 header {
     position: fixed;
@@ -275,4 +294,28 @@ button.save {
 button.save:hover {
     background-color: #3c3c3c;
     color: white;
+}
+@keyframes grow {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+@keyframes shrink {
+    from {
+        transform: scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+li.removing {
+    animation: shrink 0.3s ease-out;
 }
