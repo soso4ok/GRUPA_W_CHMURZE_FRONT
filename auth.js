@@ -75,48 +75,5 @@ if (window.location.pathname.endsWith('register.html')) {
             console.error('Registration error:', err);
             alert('Registration failed. Please try again.');
         }
-
-            // if (checkResponse.ok) {
-            //     const users = await checkResponse.json();
-            //     if (users.some(u => u.username === username)) {
-            //         alert('Username already exists');
-            //         return;
-            //     }
-            // } else {
-            //     alert('Failed to check username availability');
-            //     return;
-            // }
-
-            // Create new user
-            // const createResponse = await fetch(`http://4.231.122.88:5000/users`, {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //     },
-            //     body: JSON.stringify({
-            //         email: username,
-            //         password: password,
-            //         tasks: [
-            //     {
-            //         id: "string",
-            //         title: "string",
-            //         completed: false
-            //     }]
-            //     }),
-            // }).then(res => {
-            //     console.log(response.json())
-            // })
-            //     .then(data => console.log(data))
-            //     .catch(err => console.log(err));
-
-            // if (createResponse.ok) {
-            //     const newUser = await createResponse.json();
-            //     alert('Registration successful! Please login.');
-            //     window.location.href = 'login.html';
-            // } else {
-            //     const error = await createResponse.json();
-            //     alert(error.message || 'Registration failed');
-            // }
-
     });
 }

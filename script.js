@@ -1,5 +1,11 @@
 const API_BASE_URL = 'http://4.231.122.88:5000';
-
+if (window.location.pathname.endsWith('index.html')) {
+    const loggedInUser = localStorage.getItem('loggedInUser');
+    const userId = localStorage.getItem('userId');
+    if (!loggedInUser || !userId) {
+        window.location.href = 'login.html';
+    }
+}
 document.addEventListener('DOMContentLoaded', function () {
     const authButtons = document.getElementById('auth-buttons');
     const userGreeting = document.getElementById('user-greeting');
@@ -47,15 +53,20 @@ document.addEventListener('DOMContentLoaded', function () {
             const response = await fetch(`${API_BASE_URL}/tasks/user/${userId}`);
             if (response.ok) {
                 const tasks = await response.json();
-                // Clear existing tasks
+                console.log('Tasks loaded:', tasks); // Debug log
                 taskList.innerHTML = '';
-                // Add each task to DOM
-                tasks.forEach(task => addTaskToDOM(task.title, task.completed, task.id));
+                tasks.forEach(task => {
+                    if (task.id && task.title) {
+                        addTaskToDOM(task.title, task.completed, task.id);
+                    }
+                });
             } else {
-                console.error('Failed to load tasks');
+                console.error('Failed to load tasks:', await response.text());
+                alert('Failed to load tasks. Please refresh the page.');
             }
         } catch (err) {
             console.error('Error loading tasks:', err);
+            alert('Network error loading tasks. Please check your connection.');
         }
     }
 
@@ -75,16 +86,18 @@ document.addEventListener('DOMContentLoaded', function () {
         checkbox.className = completed ? 'fa-solid fa-circle-check' : 'fa-regular fa-circle';
         checkbox.style.cursor = 'pointer';
         checkbox.addEventListener('click', async function () {
-            li.classList.toggle('completed');
-            if (li.classList.contains('completed')) {
-                checkbox.className = 'fa-solid fa-circle-check';
-            } else {
-                checkbox.className = 'fa-regular fa-circle';
+            const newCompletedState = !li.classList.contains('completed');
+            try {
+                await updateTask(li.dataset.taskId, {
+                    title: li.querySelector('.task-text').textContent,
+                    completed: newCompletedState
+                });
+                li.classList.toggle('completed');
+                checkbox.className = newCompletedState ? 'fa-solid fa-circle-check' : 'fa-regular fa-circle';
+            } catch (err) {
+                console.error('Error updating task:', err);
+                alert('Failed to update task status');
             }
-            await updateTask(li.dataset.taskId, {
-                title: li.querySelector('.task-text').textContent,
-                completed: li.classList.contains('completed')
-            });
         });
 
         const taskTextElement = document.createElement('span');
@@ -105,11 +118,18 @@ document.addEventListener('DOMContentLoaded', function () {
         deleteBtn.innerHTML = '<i class="fa-regular fa-trash-can"></i>';
         deleteBtn.classList.add('delete');
         deleteBtn.addEventListener('click', async function () {
-            li.classList.add('removing');
-            setTimeout(async () => {
-                await deleteTask(li.dataset.taskId);
-                li.remove();
-            }, 300);
+            if (confirm('Are you sure you want to delete this task?')) {
+                try {
+                    await deleteTask(li.dataset.taskId);
+                    li.classList.add('removing');
+                    setTimeout(() => {
+                        li.remove();
+                    }, 300);
+                } catch (err) {
+                    console.error('Error deleting task:', err);
+                    alert('Failed to delete task');
+                }
+            }
         });
 
         taskContent.appendChild(checkbox);
@@ -146,16 +166,20 @@ document.addEventListener('DOMContentLoaded', function () {
         saveBtn.addEventListener('click', async function () {
             const newText = inputField.value.trim();
             if (newText !== '') {
-                taskTextElement.textContent = newText;
-                inputField.replaceWith(taskTextElement);
-                saveBtn.replaceWith(editBtn);
-                checkbox.style.display = 'inline-block';
-                deleteBtn.style.display = 'inline-block';
-
-                await updateTask(taskId, {
-                    title: newText,
-                    completed: li.classList.contains('completed')
-                });
+                try {
+                    await updateTask(taskId, {
+                        title: newText,
+                        completed: li.classList.contains('completed')
+                    });
+                    taskTextElement.textContent = newText;
+                    inputField.replaceWith(taskTextElement);
+                    saveBtn.replaceWith(editBtn);
+                    checkbox.style.display = 'inline-block';
+                    deleteBtn.style.display = 'inline-block';
+                } catch (err) {
+                    console.error('Error updating task:', err);
+                    alert('Failed to update task');
+                }
             }
         });
 
@@ -184,14 +208,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (response.ok) {
                 const task = await response.json();
-                return task.id; // Return the task ID for future updates
+                return task.id;
             } else {
-                console.error('Failed to create task');
-                return null;
+                throw new Error(await response.text());
             }
         } catch (err) {
             console.error('Error creating task:', err);
-            return null;
+            alert('Failed to create task');
+            throw err;
         }
     }
 
@@ -202,41 +226,65 @@ document.addEventListener('DOMContentLoaded', function () {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({
-                    ...taskData,
-                    id: taskId
-                }),
+                body: JSON.stringify(taskData),
             });
 
             if (!response.ok) {
-                console.error('Failed to update task');
+                throw new Error(await response.text());
             }
+            return await response.json();
         } catch (err) {
             console.error('Error updating task:', err);
+            throw err;
         }
     }
 
+    // async function deleteTask(taskId) {
+    //     try {
+    //         const response = await fetch(`${API_BASE_URL}/tasks/user/${taskId}/task/${userId}`, {
+    //             method: 'DELETE',
+    //         });
+    //
+    //         // if (!response.ok) {
+    //         //     throw new Error(await response.text());
+    //         // }
+    //         return await response.json();
+    //     } catch (err) {
+    //         console.error('Error deleting task:', err);
+    //         throw err;
+    //     }
+    // }
     async function deleteTask(taskId) {
         try {
             const response = await fetch(`${API_BASE_URL}/tasks/user/${taskId}/task/${userId}`, {
                 method: 'DELETE',
+                mode: 'cors', // Explicitly enable CORS
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                credentials: 'include' // If using cookies/sessions
             });
 
             if (!response.ok) {
-                console.error('Failed to delete task');
+                throw new Error('Failed to delete task');
             }
+            return await response.json();
         } catch (err) {
-            console.error('Error deleting task:', err);
+            console.error('Delete error:', err);
+            throw err;
         }
     }
 
     addTaskBtn.addEventListener('click', async function () {
         const taskText = taskInput.value.trim();
         if (taskText !== '') {
-            const taskId = await createTask(taskText);
-            if (taskId) {
+            try {
+                const taskId = await createTask(taskText);
                 addTaskToDOM(taskText, false, taskId);
                 taskInput.value = '';
+            } catch (err) {
+                console.error('Error adding task:', err);
             }
         }
     });
@@ -246,7 +294,5 @@ document.addEventListener('DOMContentLoaded', function () {
             addTaskBtn.click();
         }
     });
-
-    // Load tasks when page loads
     loadTasks();
 });
