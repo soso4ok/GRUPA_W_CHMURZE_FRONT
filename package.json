@@ -1,0 +1,8 @@
+{
+  "name": "my-static-app",
+  "version": "1.0.0",
+  "description": "Simple HTML app for Azure Static Web Apps",
+  "scripts": {
+    "build": "echo 'No build required for static HTML' && exit 0"
+  }
+}
