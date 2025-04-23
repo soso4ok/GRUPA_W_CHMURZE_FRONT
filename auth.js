@@ -7,7 +7,6 @@ if (window.location.pathname.endsWith('index.html')) {
         window.location.href = 'login.html';
     }
 }
-
 if (window.location.pathname.endsWith('login.html')) {
     document.getElementById('loginForm').addEventListener('submit', async function (e) {
         e.preventDefault();
